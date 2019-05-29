@@ -5,7 +5,6 @@ WORKDIR /opt/services/djangoapp/src
 
 COPY django-project /opt/services/djangoapp/src
 
-RUN ls
 RUN pip install -r /opt/services/djangoapp/src/requirements/base.txt
 
 EXPOSE 8000

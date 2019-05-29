@@ -5,6 +5,8 @@ services:
     build: .
     volumes:
       - ./django-project:/opt/services/djangoapp/src
+      - static_volume:/opt/services/djangoapp/static
+      - media_volume:/opt/services/djangoapp/media 
     networks:
       - nginx_network
       - spacedb_network
@@ -17,6 +19,8 @@ services:
       - 8000:80
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - static_volume:/opt/services/djangoapp/static
+      - media_volume:/opt/services/djangoapp/media 
     depends_on:
       - djangoapp
     networks:
@@ -39,3 +43,5 @@ networks:
 
 volumes:
   spacedb_volume:
+  static_volume:
+  media_volume:
