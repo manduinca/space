@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'space.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'spacedb',
+        'USER': 'manduinca',
+        'PASSWORD': 'T34m0Y4n4',
+        'HOST': 'spacedb',
+        'PORT': '5432',
     }
 }
 

@@ -7,6 +7,9 @@ services:
       - ./django-project:/opt/services/djangoapp/src
     networks:
       - nginx_network
+      - spacedb_network
+    depends_on:
+      - spacedb
 
   nginx:
     image: nginx:1.13
@@ -19,7 +22,20 @@ services:
     networks:
       - nginx_network
 
+  spacedb:
+    image: mdillon/postgis
+    env_file:
+      - config/db/spacedb_env
+    networks:
+      - spacedb_network
+    volumes:
+      - spacedb_volume:/var/lib/postgresql/data
+
 networks:
   nginx_network:
     driver: bridge
+  spacedb_network:
+    driver: bridge
 
+volumes:
+  spacedb_volume:
